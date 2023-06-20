@@ -1,24 +1,37 @@
-# README
+# 家電リファレンス
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+家電をユーザーが自由に批評し、そのレビューに対して｢いいね｣することができるレビューサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+家電量販店の販売員として働いていた経験があるのですが、販売員からの説明だけでは分からない｢実際に家庭で使用した際の感想｣を知ることが出来るサイトがあると購入する側としては便利になると考え、このテーマにしました。このの和を広げていけると思っています。更に会員登録制のサイトにすることによってここで収集した家電の評価の信憑性も増し、家電メーカー側の方にもユーザーの潜在的なニーズを伝えることが出来るので、より良い商品の開発にも役立つのではないかと愚考致します。
 
-* Ruby version
+### ターゲットユーザー
+- 家電の購入を検討している方
+- ｢こういう機能が欲しい｣などのニーズをメーカーに伝えたい方
+- 自信の使っている家電の評価を知りたい方
+- 自身の投稿で他の誰かの購入の一助となりたい方
+- ユーザーのニーズを把握できる家電メーカー側
 
-* System dependencies
+### 主な利用シーン
+- 購入を検討している家電の評価を確認する時
+- 使用している家電の評価を投稿する時
+- 使用している家電の評価を知りたい時
+- 実際に参考になった投稿に対して｢いいね｣をしたい時
+- 欲しい機能を家電メーカーに伝えたい時
+- 家電メーカー側の方が評価されている家電を把握する時
+- 家電メーカー側の方が使用者の細かいニーズを把握する時
 
-* Configuration
+## 設計書
+<...>
+実装機能リストのURL
+https://docs.google.com/spreadsheets/d/1IQAdwb5jcgoR8h1XLwo3ImhHKHMHpTwXIJWCeeBWlAM/edit?usp=sharing
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
