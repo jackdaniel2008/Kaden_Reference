@@ -1,34 +1,101 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-  　<%= f.label :name %><br>
-  　<%= f.text_field :name %>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <h3 class="table-secondary text-center">新規会員登録</h3>
+    </div>
+    <div class="col-md-7"></div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>氏名</th>
+            <td>
+              <%= f.label :"(姓)" %>
+            </td>
+            <td>
+              <%= f.text_field :last_name, autocomplete: "令和" %>
+            </td>
+            <td>
+              <%= f.label :"(名)" %>
+            </td>
+            <td>
+              <%= f.text_field :first_name, autocomplete: "太郎" %>
+            </td>
+            <td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th></th>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %>
+            </td>
+          </tr>
+          <tr>
+            <th>ユーザーネーム(9文字以内)</th>
+            <th></th>
+            <td>
+              <%= f.text_field :user_name, placeholder:"任意の名前を設定できます" %>
+            </td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <th></th>
+            <td>
+              <%= f.text_field :age %>歳
+            </td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <th></th>
+            <td>
+              <%= f.text_field :gender %>
+            </td>
+          </tr>
+          <tr>
+            <th>家族構成</th>
+            <th></th>
+            <td>
+              <%= f.text_field :family, placeholder:"◯人家族・一人暮らし" %>
+            </td>
+          </tr>
+          <tr>
+            <th>パスワード(6文字以上)</th>
+            <th></th>
+            <td>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </td>
+          </tr>
+          <tr>
+            <th>パスワード(確認用)</th>
+            <th></th>
+            <td>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <td>
+              <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <p>登録済みの方は<%= link_to "こちら", new_user_session_path, class: 'border-bottom' %>をクリック</p>
+    </div>
+    <div class="col-md-5"></div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
