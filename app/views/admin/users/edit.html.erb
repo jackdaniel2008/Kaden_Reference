@@ -1,2 +1,72 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <h3 class="table-secondary text-center"><%= @user.last_name %><%= @user.first_name %>さんの会員情報編集</h3>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+  <%= form_with model: @user, url: admin_user_path, method: :patch, local: true do |f| %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-9">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>会員ID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= f.text_field :last_name, autofocus: true %></td>
+            <td><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= f.email_field :email, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <th>ユーザーネーム</th>
+            <td><%= f.text_field :user_name %></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <td><%= f.text_field :age %>歳</td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td>
+              <%= f.radio_button :gender, User.genders.key(0) %><%= f.label :gender_male, User.genders_i18n[:male] %>
+              <%= f.radio_button :gender, User.genders.key(1) %><%= f.label :gender_female, User.genders_i18n[:female] %>
+              <%= f.radio_button :gender, User.genders.key(2) %><%= f.label :gender_non_binary, User.genders_i18n[:non_binary] %>
+            </td>
+          </tr>
+          <tr>
+            <th>家族構成</th>
+            <td>
+              <%= f.text_field :family %>
+            </td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <!--ラジオボタン機能で二択のチェックボックス作成-->
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :"有効" %>
+
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :"退会" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-7">
+      <%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+  <% end %>
+</div>

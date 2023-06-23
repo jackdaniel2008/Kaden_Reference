@@ -27,7 +27,6 @@
             <td>
               <%= f.text_field :first_name, autocomplete: "太郎" %>
             </td>
-            <td>
           </tr>
           <tr>
             <th>メールアドレス</th>
@@ -54,7 +53,9 @@
             <th>性別</th>
             <th></th>
             <td>
-              <%= f.text_field :gender %>
+              <%= f.radio_button :gender, User.genders.key(0) %><%= f.label :gender_male, User.genders_i18n[:male] %>
+              <%= f.radio_button :gender, User.genders.key(1) %><%= f.label :gender_female, User.genders_i18n[:female] %>
+              <%= f.radio_button :gender, User.genders.key(2) %><%= f.label :gender_non_binary, User.genders_i18n[:non_binary] %>
             </td>
           </tr>
           <tr>

@@ -1,2 +1,66 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <h3 class="table-secondary text-center"><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h3>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+    <div class="col-md-6">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>会員ID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= @user.last_name %> <%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th>ユーザーネーム</th>
+            <td><%= @user.user_name %></td>
+          </tr>
+          <tr>
+            <th>年齢</th>
+            <td><%= @user.age %>歳</td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @user.gender_i18n %></td>
+          </tr>
+          <tr>
+            <th>家族構成</th>
+            <td><%= @user.family %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <% if @user.is_deleted == false %>
+                <strong class="text-success"><%= "有効" %></strong>
+              <% else %>
+                <strong class="text-secondary"><%= "退会" %></strong>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="row justify-content-center mt-2">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <%= link_to "編集する", edit_admin_user_path, class: 'btn btn-sm btn-success' %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "レビュー履歴一覧を見る", admin_reviews_path, class: 'btn btn-sm btn-primary' %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
