@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/show'
+    get 'categories/edit'
+  end
   devise_for :users, path: 'users', module: 'public', skip: [:passwords], controllers: {
 　registrations: "public/registrations",
 　sessions: "public/sessions"
@@ -12,7 +17,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:new, :create, :show, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :show, :edit, :update]
+    resources :categories, only: [:index, :create, :show, :edit, :update]
     resources :reviews, only: [:index, :show]
   end
 
