@@ -9,14 +9,17 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genre_path(@genre.id)
+    # 元の画面に戻るリダイレクト
+      redirect_to request.referer
     else
-      render :new
+      render :index
     end
   end
 
   def show
     @genre = Genre.find(params[:id])
+    @category = Category.new
+    @categories = Category.all
   end
 
   def edit
@@ -32,9 +35,18 @@ class Admin::GenresController < ApplicationController
     end
   end
 
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to admin_genres_path
+  end
+
   private
 
   def genre_params
     params.require(:genre).permit(:name)
+  end
+  def category_params
+    params.require(:category).permit(:name, :genre_id)
   end
 end

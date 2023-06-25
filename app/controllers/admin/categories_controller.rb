@@ -1,22 +1,16 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
 
-  def index
-    @category = Category.new
-    @categories = Category.all
-  end
-
   def create
     @category = Category.new(category_params)
-    if @genre.save
-      redirect_to admin_category_path(@category.id)
+    if @category.save
+    # 元の画面に戻るリダイレクト
+      redirect_to request.referer
     else
-      render :new
+      @genre = Genre.new
+      @genres = Genre.all
+      render template: "admin/genres/index"
     end
-  end
-
-  def show
-    @category = Category.find(params[:id])
   end
 
   def edit
@@ -26,15 +20,22 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @item.update(category_params)
-      redirect_to admin_categories_path
+      redirect_to request.referer
     else
       render :edit
     end
   end
 
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
+    # 元の画面に戻るリダイレクト
+    redirect_to request.referer
+  end
+
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :genre_id)
   end
 end

@@ -33,6 +33,7 @@
           <tr>
             <th>ジャンルID</th>
             <th>ジャンル名</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +46,10 @@
               <%= link_to admin_genre_path(genre.id) do %>
                 <%= genre.name %>
               <% end %>
+            </td>
+            <td>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-sm btn-success' %>
+              <%= link_to "削除する", admin_genre_path(genre.id), method: :delete, class: "btn btn-sm btn-danger" %>
             </td>
           </tr>
         <% end %>
