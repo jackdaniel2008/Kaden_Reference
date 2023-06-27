@@ -30,16 +30,10 @@
             </td>
           </tr>
           <tr>
-            <th>ジャンル①</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>ジャンル②</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>ジャンル③</th>
-            <td></td>
+            <th>種別</th>
+            <td>
+              <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+            </td>
           </tr>
         </tbody>
       </table>

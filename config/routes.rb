@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :show, :edit, :update, :destroy]
-    resources :categories, only: [:create, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show]
   end
 

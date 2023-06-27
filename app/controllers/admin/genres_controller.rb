@@ -18,8 +18,6 @@ class Admin::GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @category = Category.new
-    @categories = Category.all
   end
 
   def edit
@@ -45,8 +43,5 @@ class Admin::GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:name)
-  end
-  def category_params
-    params.require(:category).permit(:name, :genre_id)
   end
 end
