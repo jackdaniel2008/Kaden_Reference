@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_27_190329) do
+ActiveRecord::Schema.define(version: 2023_06_29_112505) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,7 +64,8 @@ ActiveRecord::Schema.define(version: 2023_06_27_190329) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name", null: false
+    t.string "name"
+    t.string "tag"
   end
 
   create_table "items", force: :cascade do |t|
@@ -74,12 +75,57 @@ ActiveRecord::Schema.define(version: 2023_06_27_190329) do
     t.text "introduction", null: false
   end
 
+  create_table "maker_tags", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "maker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_maker_tags_on_item_id"
+    t.index ["maker_id"], name: "index_maker_tags_on_maker_id"
+  end
+
+  create_table "makers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
+
+  create_table "people_tags", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "people_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_people_tags_on_item_id"
+    t.index ["people_id"], name: "index_people_tags_on_people_id"
+  end
+
+  create_table "peoples", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.text "body", null: false
+  end
+
+  create_table "size_tags", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "size_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_size_tags_on_item_id"
+    t.index ["size_id"], name: "index_size_tags_on_size_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,4 +151,10 @@ ActiveRecord::Schema.define(version: 2023_06_27_190329) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "genre_tags", "genres"
   add_foreign_key "genre_tags", "items"
+  add_foreign_key "maker_tags", "items"
+  add_foreign_key "maker_tags", "makers"
+  add_foreign_key "people_tags", "items"
+  add_foreign_key "people_tags", "peoples"
+  add_foreign_key "size_tags", "items"
+  add_foreign_key "size_tags", "sizes"
 end

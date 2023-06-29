@@ -18,10 +18,34 @@
             <td><%= @item.name %></td>
           </tr>
           <tr>
-            <th>ジャンル</th>
+            <th>種別</th>
             <td>
               <% @item.genres.each do |genre| %>
                 <%= genre.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>容量やサイズなど</th>
+            <td>
+              <% @item.sizes.each do |size| %>
+                <%= size.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>適正人数</th>
+            <td>
+              <% @item.peoples.each do |people| %>
+                <%= people.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>メーカー</th>
+            <td>
+              <% @item.makers.each do |maker| %>
+                <%= maker.name %>
               <% end %>
             </td>
           </tr>

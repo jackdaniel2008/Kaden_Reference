@@ -12,8 +12,12 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :show, :edit, :update, :destroy]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :sizes, only: [:index, :create, :edit, :update, :destroy]
+    resources :peoples, only: [:index, :create, :edit, :update, :destroy]
+    resources :makers, only: [:index, :create, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show]
+    resources :categories, only: [:index]
   end
 
   scope module: :public do

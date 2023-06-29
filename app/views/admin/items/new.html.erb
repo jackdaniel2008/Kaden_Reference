@@ -8,7 +8,7 @@
 
   <%= form_with model: @item, url:admin_items_path do |f| %>
   <div class="row justify-content-center mt-4">
-    <div class="col-md-9">
+    <div class="col-md-10">
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -33,6 +33,24 @@
             <th>種別</th>
             <td>
               <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+            </td>
+          </tr>
+          <tr>
+            <th>容量やサイズなど</th>
+            <td>
+              <%= f.collection_check_boxes :size_ids, Size.all, :id, :name %>
+            </td>
+          </tr>
+          <tr>
+            <th>適正人数</th>
+            <td>
+              <%= f.collection_check_boxes :people_ids, People.all, :id, :name %>
+            </td>
+          </tr>
+          <tr>
+            <th>メーカー</th>
+            <td>
+              <%= f.collection_check_boxes :maker_ids, Maker.all, :id, :name %>
             </td>
           </tr>
         </tbody>
