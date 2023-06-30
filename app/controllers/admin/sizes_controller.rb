@@ -22,7 +22,7 @@ class Admin::SizesController < ApplicationController
 
   def update
     @size = Size.find(params[:id])
-    if @item.update(size_params)
+    if @size.update(size_params)
       redirect_to admin_sizes_path
     else
       render :edit

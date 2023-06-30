@@ -20,26 +20,38 @@
           <tr>
             <th>商品名</th>
             <td>
-              <%= f.text_field :name, placeholder:"商品名" %>
+              <%= f.text_field :name %>
             </td>
           </tr>
           <tr>
             <th>商品説明</th>
             <td>
-              <%= f.text_area :introduction, placeholder:"ここに説明文を記述します" %>
+              <%= f.text_area :introduction %>
             </td>
           </tr>
           <tr>
-            <th>ジャンル①</th>
-            <td></td>
+            <th>種別</th>
+            <td>
+              <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+            </td>
           </tr>
           <tr>
-            <th>ジャンル②</th>
-            <td></td>
+            <th>容量やサイズなど</th>
+            <td>
+              <%= f.collection_check_boxes :size_ids, Size.all, :id, :name %>
+            </td>
           </tr>
           <tr>
-            <th>ジャンル③</th>
-            <td></td>
+            <th>適正人数</th>
+            <td>
+              <%= f.collection_check_boxes :people_ids, People.all, :id, :name %>
+            </td>
+          </tr>
+          <tr>
+            <th>メーカー</th>
+            <td>
+              <%= f.collection_check_boxes :maker_ids, Maker.all, :id, :name %>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -18,9 +18,10 @@
           <tr>
             <th>商品ID</th>
             <th>商品名</th>
-            <th>ジャンル①</th>
-            <th>ジャンル②</th>
-            <th>ジャンル③</th>
+            <th>種別</th>
+            <th>容量やサイズなど</th>
+            <th>適正人数</th>
+            <th>メーカー</th>
           </tr>
         </thead>
         <tbody>
@@ -34,9 +35,26 @@
                 <%= item.name %>
               <% end %>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+              <% item.genres.each do |genre| %>
+                <%= genre.name %>
+              <% end %>
+            </td>
+            <td>
+              <% item.sizes.each do |size| %>
+                <%= size.name %>
+              <% end %>
+            </td>
+            <td>
+              <% item.peoples.each do |people| %>
+                <%= people.name %>
+              <% end %>
+            </td>
+            <td>
+              <% item.makers.each do |maker| %>
+                <%= maker.name %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
