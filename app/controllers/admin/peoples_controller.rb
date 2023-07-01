@@ -16,6 +16,11 @@ class Admin::PeoplesController < ApplicationController
     end
   end
 
+  def show
+    @peoples = People.all
+    @people = People.find(params[:id])
+  end
+
   def edit
     @people = People.find(params[:id])
   end

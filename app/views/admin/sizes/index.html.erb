@@ -43,7 +43,7 @@
               <%= size.id %>
             </td>
             <td>
-              <%= size.name %>
+              <%= link_to size.name, admin_size_path(size.id) %>
             </td>
             <td>
               <%= link_to "編集する", edit_admin_size_path(size.id), class: 'btn btn-sm btn-success' %>

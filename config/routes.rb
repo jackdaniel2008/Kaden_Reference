@@ -12,10 +12,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update, :destroy]
-    resources :sizes, only: [:index, :create, :edit, :update, :destroy]
-    resources :peoples, only: [:index, :create, :edit, :update, :destroy]
-    resources :makers, only: [:index, :create, :edit, :update, :destroy]
+    resources :genres, only: [:index, :create, :show, :edit, :update, :destroy]
+    resources :sizes, only: [:index, :create, :show, :edit, :update, :destroy]
+    resources :peoples, only: [:index, :create, :show, :edit, :update, :destroy]
+    resources :makers, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show]
     resources :categories, only: [:index]
   end
@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     patch 'users/withdraw'
     resources :items, only: [:show, :create]
     resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :genres, only: [:index]
+    resources :sizes, only: [:index]
+    resources :peoples, only: [:index]
+    resources :makers, only: [:index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

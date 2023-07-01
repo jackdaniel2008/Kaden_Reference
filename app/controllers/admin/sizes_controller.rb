@@ -16,6 +16,11 @@ class Admin::SizesController < ApplicationController
     end
   end
 
+  def show
+    @sizes = Size.all
+    @size = Size.find(params[:id])
+  end
+
   def edit
     @size = Size.find(params[:id])
   end

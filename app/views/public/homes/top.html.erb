@@ -4,22 +4,27 @@
       <h3>商品一覧</h3>
     </div>
     <div class="col-sm-10 pt-4 px-sm-0">
-      <h5>(全<%= @items.count %>件)</h5>
+      <h5>
+        (全<%= @items.count %>件)
+      </h5>
+      <h6>
+        <%= flash[:notice] %>
+      </h6>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2 border">
-      <strong>ジャンル検索</strong>
+      <strong>カテゴリー検索</strong>
     </div>
     <div class="col-md-8"></div>
   </div>
   <div class="row">
     <div class="col-md-2 border">
       <ul class="list-unstyled">
-        <li>家電種別</li>
-        <li>容量・畳数など</li>
-        <li>使用適正人数</li>
-        <li>メーカー名</li>
+        <li><%= link_to "種別", genres_path %></li>
+        <li><%= link_to "容量やサイズなど", sizes_path %></li>
+        <li><%= link_to "適正人数", peoples_path %></li>
+        <li><%= link_to "メーカー", makers_path %></li>
       </ul>
     </div>
     <% @items.each do |item| %>

@@ -43,7 +43,7 @@
               <%= people.id %>
             </td>
             <td>
-              <%= people.name %>
+              <%= link_to people.name, admin_people_path(people.id) %>
             </td>
             <td>
               <%= link_to "編集する", edit_admin_people_path(people.id), class: 'btn btn-sm btn-success' %>

@@ -43,7 +43,7 @@
               <%= maker.id %>
             </td>
             <td>
-              <%= maker.name %>
+              <%= link_to maker.name, admin_maker_path(maker.id) %>
             </td>
             <td>
               <%= link_to "編集する", edit_admin_maker_path(maker.id), class: 'btn btn-sm btn-success' %>

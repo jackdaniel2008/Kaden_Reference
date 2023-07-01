@@ -16,6 +16,11 @@ class Admin::MakersController < ApplicationController
     end
   end
 
+  def show
+    @makers = Maker.all
+    @maker = Maker.find(params[:id])
+  end
+
   def edit
     @maker = Maker.find(params[:id])
   end

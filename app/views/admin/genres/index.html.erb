@@ -43,7 +43,7 @@
               <%= genre.id %>
             </td>
             <td>
-              <%= genre.name %>
+              <%= link_to genre.name, admin_genre_path(genre.id) %>
             </td>
             <td>
               <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-sm btn-success' %>

@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <h3 class="table-secondary text-center">適正人数名称一覧</h3>
+    </div>
+    <div class="col-md-7"></div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+      <table class="table table-bordered">
+        <thead class="table-secondary">
+          <tr>
+            <th>名称</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @peoples.each do |people| %>
+          <tr>
+            <td>
+              <%= people.name %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
