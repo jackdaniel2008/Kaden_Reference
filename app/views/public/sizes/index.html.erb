@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <h3 class="table-secondary text-center">容量やサイズなど名称一覧</h3>
+      <h3 class="table-secondary text-center">容量やサイズなど一覧</h3>
     </div>
     <div class="col-md-5"></div>
   </div>
@@ -18,7 +18,7 @@
         <% @sizes.each do |size| %>
           <tr>
             <td>
-              <%= size.name %>
+              <%= link_to size.name, size_path(size.id) %>
             </td>
           </tr>
         <% end %>

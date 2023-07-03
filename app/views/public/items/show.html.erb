@@ -1,2 +1,97 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2 border">
+      <strong>カテゴリー検索</strong>
+    </div>
+    <div class="col-md-8"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 border">
+      <ul class="list-unstyled">
+        <li><%= link_to "種別", genres_path %></li>
+        <li><%= link_to "容量やサイズなど", sizes_path %></li>
+        <li><%= link_to "適正人数", peoples_path %></li>
+        <li><%= link_to "メーカー", makers_path %></li>
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+      <p><%= image_tag @item.image, size: "300x300" %></p>
+    </div>
+    <div class="col-md-4">
+      <h1><strong><%= @item.name %></strong></h1>
+      <div>
+        <strong>
+          <% @item.genres.each do |genre| %>
+            <%= genre.name %>
+          <% end %>
+        </strong>
+      </div>
+      <div>
+        <strong>
+          <% @item.sizes.each do |size| %>
+            <%= size.name %>
+          <% end %>
+        </strong>
+      </div>
+      <div>
+        <strong>
+          <% @item.peoples.each do |people| %>
+            <%= people.name %>
+          <% end %>
+        </strong>
+      </div>
+      <div>
+        <strong>
+          <% @item.makers.each do |maker| %>
+            <%= maker.name %>
+          <% end %>
+        </strong>
+      </div>
+      <div class="mt-5">
+        <%= @item.introduction %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-2">
+      <div class="table-secondary text-center">
+        <strong>
+          レビュー投稿
+        </strong>
+      </div>
+      <% if user_signed_in? %>
+        <%= form_with model: [@item, @review] do |f| %>
+          <div>
+            <%= f.text_area :body %>
+          </div>
+          <div>
+            <%= f.submit "新規登録" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="table-bordered">会員登録することで</br>レビューの投稿をす</br>ることができます。</div>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-3 table-secondary text-center mb-3"><strong>レビュー一覧</strong> (<%= @item.reviews.count %>件)</div>
+      <% @item.reviews.each do |review| %>
+        <p class="ml-3 mb-0"><%= review.created_at.strftime('%Y/%m/%d') %></p>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="col-md-2">
+                <%= review.user.user_name %></br>
+                <%= review.user.age %>歳 <%= review.user.gender_i18n %> <%= review.user.family %>
+              </td>
+              <td class="col-md-6">
+                <%= review.body %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

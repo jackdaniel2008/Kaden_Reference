@@ -4,12 +4,7 @@ class Public::HomesController < ApplicationController
     if params[:name].present?
       @items = Item.page(params[:page]).per(10).where('name LIKE ?', "%#{params[:name]}%")
     else
-      if params[:name].present?
-        @items = Item.page(params[:page]).per(10).where(genre_name: "#{params[:name]}")
-      else
-        flash[:notice] = "検索結果がありません"
-        @items = Item.page(params[:page]).per(10)
-      end
+      @items = Item.page(params[:page]).per(10)
     end
   end
 

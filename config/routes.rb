@@ -28,12 +28,14 @@ Rails.application.routes.draw do
     patch 'users/update'
     get 'users/check'
     patch 'users/withdraw'
-    resources :items, only: [:show, :create]
-    resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
-    resources :genres, only: [:index]
-    resources :sizes, only: [:index]
-    resources :peoples, only: [:index]
-    resources :makers, only: [:index]
+    resources :items, only: [:show] do
+      resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
+    end
+    # レビューは商品に紐付いているため親子関係のルーティング
+    resources :genres, only: [:index, :show]
+    resources :sizes, only: [:index, :show]
+    resources :peoples, only: [:index, :show]
+    resources :makers, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

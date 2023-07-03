@@ -18,7 +18,7 @@
         <% @makers.each do |maker| %>
           <tr>
             <td>
-              <%= maker.name %>
+              <%= link_to maker.name, maker_path(maker.id) %>
             </td>
           </tr>
         <% end %>
