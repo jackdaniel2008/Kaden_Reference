@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     get 'users/check'
     patch 'users/withdraw'
     resources :items, only: [:show] do
-      resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
+      resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy] do
+        resources :comments, only: [:index, :create, :edit, :update, :destroy]
+      end
     end
     # レビューは商品に紐付いているため親子関係のルーティング
     resources :genres, only: [:index, :show]

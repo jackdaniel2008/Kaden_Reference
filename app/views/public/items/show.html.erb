@@ -57,9 +57,7 @@
   <div class="row mt-5">
     <div class="col-md-2">
       <div class="table-secondary text-center">
-        <strong>
-          レビュー投稿
-        </strong>
+        <strong>レビュー投稿</strong>
       </div>
       <% if user_signed_in? %>
         <%= form_with model: [@item, @review] do |f| %>
@@ -74,19 +72,28 @@
         <div class="table-bordered">会員登録することで</br>レビューの投稿をす</br>ることができます。</div>
       <% end %>
     </div>
-    <div class="col-md-8">
-      <div class="col-md-3 table-secondary text-center mb-3"><strong>レビュー一覧</strong> (<%= @item.reviews.count %>件)</div>
+
+    <div class="col-md-10">
+      <div class="col-md-3 table-secondary text-center mb-3">
+        <strong>レビュー一覧</strong> (<%= @item.reviews.count %>件)
+      </div>
       <% @item.reviews.each do |review| %>
         <p class="ml-3 mb-0"><%= review.created_at.strftime('%Y/%m/%d') %></p>
-        <table class="table table-bordered">
+        <table class="mb-3">
           <tbody>
             <tr>
-              <td class="col-md-2">
+              <td class="col-md-2 table-bordered pr-0">
                 <%= review.user.user_name %></br>
                 <%= review.user.age %>歳 <%= review.user.gender_i18n %> <%= review.user.family %>
               </td>
-              <td class="col-md-6">
+              <td class="col-md-6 table-bordered">
                 <%= review.body %>
+              </td>
+              <td class="col-md-2">
+                <%= link_to "詳細を見る", item_review_path(review.id), class: 'btn btn-sm btn-success' %></br>
+                <% if review.user == current_user %>
+                  <%= link_to "削除する", item_review_path(review.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+                <% end %>
               </td>
             </tr>
           </tbody>

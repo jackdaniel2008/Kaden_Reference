@@ -1,11 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  before_action :authenticate_user!
 
-  def index
-  end
-
-  def show
-  end
 
   def create
     @item = Item.find(params[:item_id])
@@ -16,12 +10,28 @@ class Public::ReviewsController < ApplicationController
     redirect_to request.referer
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @review = @item.reviews.find(params[:item_id])
+    @comment = Comment.new
+    @comments = Comment.all
+  end
+
+  def index
+  end
+
   def edit
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to item_path(item.id)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:body)
+    params.require(:review).permit(:body, :user_id)
   end
 end
