@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-2">
-      <div class="table-secondary text-center">
+      <div class="table-secondary text-center mb-1">
         <strong>コメント投稿</strong>
       </div>
       <% if user_signed_in? %>
@@ -14,11 +14,11 @@
           </div>
         <% end %>
       <% else %>
-        <div class="table-bordered">会員登録することで</br>コメントの投稿をす</br>ることができます。</div>
+        <div class="table-bordered">会員登録することでコメントの投稿をすることができます。</div>
       <% end %>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-10">
       <table class="mb-3">
         <tbody>
           <tr>
@@ -32,15 +32,20 @@
         </tbody>
       </table>
       <p class="ml-3 mb-0"><%= @review.created_at.strftime('%Y/%m/%d') %></p>
-      <table class="table table-bordered">
+      <table>
         <tbody>
           <tr>
-            <td class="col-md-2">
+            <td class="col-md-2 table-bordered pr-0">
               <%= @review.user.user_name %></br>
               <%= @review.user.age %>歳 <%= @review.user.gender_i18n %> <%= @review.user.family %>
             </td>
-            <td class="col-md-6">
+            <td class="col-md-6 table-bordered">
               <%= @review.body %>
+            </td>
+            <td class="col-md-2">
+              <% if @review.user == current_user %>
+                <%= link_to "編集する", edit_item_review_path(@review.id), class: 'btn btn-sm btn-success' %>
+              <% end %>
             </td>
           </tr>
         </tbody>
@@ -48,23 +53,29 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="col-md-3 table-secondary text-center mb-3">
         <strong>コメント一覧</strong> (<%= @review.comments.count %>件)
       </div>
       <% @review.comments.each do |comment| %>
         <p class="ml-3 mb-0"><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-        <table class="table table-bordered">
+        <table class="mb-3">
           <tbody>
             <tr>
-              <td class="col-md-2">
+              <td class="col-md-2 table-bordered pr-0">
                 <%= comment.user.user_name %></br>
                 <%= comment.user.age %>歳 <%= comment.user.gender_i18n %> <%= comment.user.family %>
               </td>
-              <td class="col-md-6">
+              <td class="col-md-6 table-bordered">
                 <%= comment.body %>
+              </td>
+              <td class="col-md-2">
+                <% if comment.user == current_user %>
+                  <%= link_to "編集する", edit_item_review_comment_path(@review, comment.id), class: 'btn btn-sm btn-success' %>
+                  <%= link_to "削除する", item_review_comment_path(@review, comment.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+                <% end %>
               </td>
             </tr>
           </tbody>

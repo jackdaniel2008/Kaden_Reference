@@ -3,7 +3,7 @@
     <div class="col-md-2 border">
       <strong>カテゴリー検索</strong>
     </div>
-    <div class="col-md-8"></div>
+    <div class="col-md-10"></div>
   </div>
   <div class="row">
     <div class="col-md-2 border">
@@ -20,6 +20,28 @@
     </div>
     <div class="col-md-4">
       <h1><strong><%= @item.name %></strong></h1>
+
+      <% if user_signed_in? %>
+        <% if @item.favorited_by?(current_user) %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :delete do %>
+              ♥<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to item_favorites_path(@item), method: :post do %>
+              ♡<%= @item.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% end %>
+      <% else %>
+        <p>
+          ♡<%= @item.favorites.count %> いいね
+        </p>
+      <% end %>
+
+
       <div>
         <strong>
           <% @item.genres.each do |genre| %>
@@ -56,7 +78,7 @@
 
   <div class="row mt-5">
     <div class="col-md-2">
-      <div class="table-secondary text-center">
+      <div class="table-secondary text-center mb-1">
         <strong>レビュー投稿</strong>
       </div>
       <% if user_signed_in? %>
@@ -69,7 +91,7 @@
           </div>
         <% end %>
       <% else %>
-        <div class="table-bordered">会員登録することで</br>レビューの投稿をす</br>ることができます。</div>
+        <div class="table-bordered">会員登録することでレビューの投稿をすることができます。</div>
       <% end %>
     </div>
 
@@ -90,7 +112,7 @@
                 <%= review.body %>
               </td>
               <td class="col-md-2">
-                <%= link_to "詳細を見る", item_review_path(review.id), class: 'btn btn-sm btn-success' %></br>
+                <%= link_to "詳細", item_review_path(review.id), class: 'btn btn-sm btn-primary' %>
                 <% if review.user == current_user %>
                   <%= link_to "削除する", item_review_path(review.id), method: :delete, class: 'btn btn-sm btn-danger' %>
                 <% end %>

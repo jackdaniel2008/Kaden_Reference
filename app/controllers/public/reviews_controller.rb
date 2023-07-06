@@ -3,8 +3,7 @@ class Public::ReviewsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
+    @review = current_user.reviews.new(review_params)
     @review.item_id = @item.id
     @review.save
     redirect_to request.referer
@@ -24,7 +23,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
+    item = Item.find(params[:id])
+    review = item.reviews.find(params[:item_id])
     review.destroy
     redirect_to item_path(item.id)
   end

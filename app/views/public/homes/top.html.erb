@@ -13,7 +13,7 @@
     <div class="col-md-2 border">
       <strong>カテゴリー検索</strong>
     </div>
-    <div class="col-md-8"></div>
+    <div class="col-md-10"></div>
   </div>
   <div class="row">
     <div class="col-md-2 border">
@@ -25,15 +25,21 @@
       </ul>
     </div>
     <% @items.each do |item| %>
-    <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
-      <div class="card border-0" style="width: 18rem;">
+    <div class="col-md-2">
+      <div class="card border-0">
         <%= link_to item_path(item.id) do %>
           <p class="card-img-top"><%= image_tag item.image, size: "150x150" %></p>
         <% end %>
       </div>
-      <div class="card-body pt-0 pl-0">
-        <strong class="item-details item-name card-title"><%= item.name %></strong>
+      <div class="card-body pt-0 pb-0">
+        <strong class="item-details item-name card-title">
+          <%= item.name %>
+        </strong>
       </div>
+      <p class="item-details">
+        ♡<%= item.favorites.count %> いいね</br>
+        💬<%= item.reviews.count %> レビュー
+      </p>
     </div>
     <% end %>
     <div>

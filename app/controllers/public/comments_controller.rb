@@ -2,8 +2,7 @@ class Public::CommentsController < ApplicationController
 
   def create
     @review = Review.find(params[:review_id])
-    @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
+    @comment = current_user.comments.new(comment_params)
     @comment.review_id = @review.id
     @comment.save
     redirect_to request.referer
@@ -12,10 +11,14 @@ class Public::CommentsController < ApplicationController
   def index
   end
 
+  def edit
+  end
+
   def destroy
-    comment = Comment.find(params[:id])
+    review = Review.find(params[:item_id])
+    comment = review.comments.find(params[:review_id])
     comment.destroy
-    redirect_to review_path(review.id)
+    redirect_to item_review_path(review.id)
   end
 
   private
