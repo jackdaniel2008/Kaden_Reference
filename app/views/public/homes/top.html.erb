@@ -31,14 +31,13 @@
           <p class="card-img-top"><%= image_tag item.image, size: "150x150" %></p>
         <% end %>
       </div>
-      <div class="card-body pt-0 pb-0">
+      <div class="card-body text-center pt-0 pb-0">
         <strong class="item-details item-name card-title">
           <%= item.name %>
         </strong>
       </div>
-      <p class="item-details">
-        ♡<%= item.favorites.count %> いいね</br>
-        💬<%= item.reviews.count %> レビュー
+      <p class="item-details text-center">
+        <i class="far fa-heart" style="color: #f21ceb;"></i><%= item.favorites.count %>件　<i class="far fa-comment" style="color: #3cb4d3;"></i><%= item.reviews.count %>件
       </p>
     </div>
     <% end %>

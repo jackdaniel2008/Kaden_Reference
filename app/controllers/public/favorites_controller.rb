@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  # 商品に対するいいねのコントローラー
 
   def create
     item = Item.find(params[:item_id])

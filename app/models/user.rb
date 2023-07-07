@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :r_favorites, dependent: :destroy
 
   # 退会済みかの確認。is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?

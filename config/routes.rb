@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :items, only: [:show] do
       resource :favorites, only: [:create, :destroy] # 「1人のユーザーは1つの商品に対して1回しかいいねできない」という仕様であるため、｢resources｣ではなく｢resource｣
       resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy] do
+        resource :r_favorites, only: [:create, :destroy]
         resources :comments, only: [:index, :create, :edit, :update, :destroy]
       end
     end
