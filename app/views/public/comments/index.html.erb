@@ -1,2 +1,34 @@
-<h1>Public::Comments#index</h1>
-<p>Find me in app/views/public/comments/index.html.erb</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <h3 class="table-secondary text-center">コメント履歴一覧</h3>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+      <table class="table-bordered">
+        <thead class="table-secondary">
+          <tr>
+            <th class="col-md-2">投稿日時</th>
+            <th class="col-md-8">投稿内容</th>
+          </tr>
+        </thead>
+      <% @comments.each do |comment| %>
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <%= comment.created_at.strftime('%Y/%m/%d') %></br>
+              <%= comment.review.item.name %>
+            </td>
+            <td class="pl-2">
+              <%= comment.body %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

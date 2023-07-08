@@ -51,14 +51,25 @@
     <div class="col-md-4"></div>
   </div>
 
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mt-3">
     <div class="col-md-2">
       <h4>
         <strong>レビュー履歴</strong>
       </h4>
     </div>
     <div class="col-md-8">
-      <%= link_to "一覧を見る", class: 'btn btn-sm btn-primary' %>
+      <%= link_to "一覧を見る", reviews_path, class: 'btn btn-sm btn-primary' %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-2">
+      <h4>
+        <strong>コメント履歴</strong>
+      </h4>
+    </div>
+    <div class="col-md-8">
+      <%= link_to "一覧を見る", comments_path, class: 'btn btn-sm btn-primary' %>
     </div>
   </div>
 </div>

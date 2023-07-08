@@ -9,6 +9,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def index
+    @comments = current_user.comments.all
   end
 
   def edit

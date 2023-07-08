@@ -17,6 +17,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
+    @reviews = current_user.reviews.all
   end
 
   def edit
