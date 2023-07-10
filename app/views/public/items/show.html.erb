@@ -76,14 +76,14 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col-md-2">
+    <div class="col-md-2 px-0">
       <div class="table-secondary text-center mb-1">
         <strong>レビュー投稿</strong>
       </div>
       <% if user_signed_in? %>
         <%= form_with model: [@item, @review] do |f| %>
           <div>
-            <%= f.text_area :body %>
+            <%= f.text_area :body, size: "23x4" %>
           </div>
           <div>
             <%= f.submit "新規登録" %>
@@ -94,7 +94,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-9 ml-5">
       <div class="col-md-3 table-secondary text-center mb-3">
         <strong>レビュー一覧</strong> (<%= @item.reviews.count %>件)
       </div>
@@ -108,7 +108,7 @@
                 <%= review.user.age %>歳 <%= review.user.gender_i18n %> <%= review.user.family %></br>
                 <i class="far fa-heart" style="color: #f21ceb;"></i><%= review.r_favorites.count %>件　<i class="far fa-comment" style="color: #3cb4d3;"></i><%= review.comments.count %>件
               </td>
-              <td class="col-md-6 table-bordered">
+              <td class="col-md-5 table-bordered">
                 <%= review.body %>
               </td>
               <td class="col-md-2">

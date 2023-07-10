@@ -1,2 +1,37 @@
-<h1>Public::Reviews#edit</h1>
-<p>Find me in app/views/public/reviews/edit.html.erb</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <h3 class="table-secondary text-center">レビュー編集</h3>
+    </div>
+    <div class="col-md-7"></div>
+  </div>
+
+  <%= form_with model: @review, url: item_review_path, method: :patch, local: true do |f| %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+      <p class="ml-3 mb-0"><%= @review.created_at.strftime('%Y/%m/%d') %></p>
+      <table>
+        <tbody>
+          <tr>
+            <td class="col-md-2 table-bordered text-center">
+              <%= @review.item.name %>
+            </td>
+            <td class="col-md-8">
+              <%= f.text_area :body, size: "70x4" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+      <%= f.submit "編集内容を保存", class: 'btn btn-sm btn-success' %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "前の画面に戻る", :back, class: 'btn btn-sm btn-danger' %>
+    </div>
+  </div>
+  <% end %>
+</div>

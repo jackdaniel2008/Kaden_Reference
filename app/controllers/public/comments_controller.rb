@@ -13,6 +13,18 @@ class Public::CommentsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:item_id])
+    @comment = @review.comments.find(params[:review_id])
+  end
+
+  def update
+    @review = Review.find(params[:item_id])
+    @comment = @review.comments.find(params[:review_id])
+    if @comment.update(comment_params)
+      redirect_to item_review_path(@review.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

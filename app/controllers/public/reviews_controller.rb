@@ -21,6 +21,18 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @review = @item.reviews.find(params[:item_id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @review = @item.reviews.find(params[:item_id])
+    if @review.update(review_params)
+      redirect_to item_review_path(@review.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

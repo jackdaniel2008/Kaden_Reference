@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'comments/index'
+  end
   devise_for :users, path: 'users', module: 'public', skip: [:passwords], controllers: {
 　registrations: "public/registrations",
 　sessions: "public/sessions"
@@ -11,12 +14,16 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :items, only: [:new, :create, :show, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      resources :reviews, only: [:index]
+      resources :comments, only: [:index]
+    end
+    resources :reviews, only: [:destroy]
+    resources :comments, only: [:destroy]
     resources :genres, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :sizes, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :peoples, only: [:index, :create, :show, :edit, :update, :destroy]
     resources :makers, only: [:index, :create, :show, :edit, :update, :destroy]
-    resources :reviews, only: [:index, :show]
     resources :categories, only: [:index]
   end
 
