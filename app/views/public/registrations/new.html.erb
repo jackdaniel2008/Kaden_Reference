@@ -3,102 +3,99 @@
     <div class="col-md-3">
       <h3 class="table-secondary text-center">新規会員登録</h3>
     </div>
-    <div class="col-md-7"></div>
+    <div class="col-md-5"></div>
   </div>
 
   <%= form_with model: @user, url: user_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
   <div class="row justify-content-center mt-3">
-    <div class="col-md-1">
-      
+    <div class="col-md-3">
+      <strong>氏名</strong>
     </div>
-    <div class="col-md-9">
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th>氏名</th>
-            <td>
-              <%= f.label :"(姓)" %>
-            </td>
-            <td>
-              <%= f.text_field :last_name, autocomplete: "令和" %>
-            </td>
-            <td>
-              <%= f.label :"(名)" %>
-            </td>
-            <td>
-              <%= f.text_field :first_name, autocomplete: "太郎" %>
-            </td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <th></th>
-            <td>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %>
-            </td>
-          </tr>
-          <tr>
-            <th>ユーザーネーム(9文字以内)</th>
-            <th></th>
-            <td>
-              <%= f.text_field :user_name, placeholder:"任意の名前を設定できます" %>
-            </td>
-          </tr>
-          <tr>
-            <th>年齢</th>
-            <th></th>
-            <td>
-              <%= f.text_field :age %>歳
-            </td>
-          </tr>
-          <tr>
-            <th>性別</th>
-            <th></th>
-            <td>
-              <%= f.radio_button :gender, User.genders.key(0) %><%= f.label :gender_male, User.genders_i18n[:male] %>
-              <%= f.radio_button :gender, User.genders.key(1) %><%= f.label :gender_female, User.genders_i18n[:female] %>
-              <%= f.radio_button :gender, User.genders.key(2) %><%= f.label :gender_non_binary, User.genders_i18n[:non_binary] %>
-            </td>
-          </tr>
-          <tr>
-            <th>家族構成</th>
-            <th></th>
-            <td>
-              <%= f.text_field :family, placeholder:"◯人家族・一人暮らし" %>
-            </td>
-          </tr>
-          <tr>
-            <th>パスワード(6文字以上)</th>
-            <th></th>
-            <td>
-              <%= f.password_field :password, autocomplete: "new-password" %>
-            </td>
-          </tr>
-          <tr>
-            <th>パスワード(確認用)</th>
-            <th></th>
-            <td>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-            </td>
-          </tr>
-          <tr>
-            <th></th>
-            <th></th>
-            <td>
-              <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-md-2 px-0">
+      <%= f.label :"(姓)" %>
+      <%= f.text_field :last_name, placeholder: "令和", size: "10x1" %>
+    </div>
+    <div class="col-md-2 px-0">
+      <%= f.label :"(名)" %>
+      <%= f.text_field :first_name, placeholder: "太郎", size: "10x1" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>メールアドレス</strong>
+    </div>
+    <div class="col-md-4 pl-20">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", size: "38x1" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>パスワード(6文字以上)</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.password_field :password, autocomplete: "new-password", size: "30x1" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>パスワード(確認用)</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", size: "30x1" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>ユーザーネーム(9文字以内)</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :user_name, placeholder:"任意の名前を設定できます。", size: "30x1" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>年齢</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :age, size: "1x1" %>歳
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>性別</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.radio_button :gender, User.genders.key(0) %><%= f.label :gender_male, User.genders_i18n[:male] %>
+      <%= f.radio_button :gender, User.genders.key(1) %><%= f.label :gender_female, User.genders_i18n[:female] %>
+      <%= f.radio_button :gender, User.genders.key(2) %><%= f.label :gender_non_binary, User.genders_i18n[:non_binary] %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <strong>家族構成</strong>
+    </div>
+    <div class="col-md-4">
+      <%= f.text_field :family, placeholder:"◯人家族・一人暮らし" %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-7">
+      ※当サイトの特性上、<strong>ユーザーネーム・年齢・性別・家族構成</strong>は他ユーザーからも<strong class="text-danger">見える状態</strong>となりますので、ご了承の上でのご登録をお願い致します。
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+      <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
     </div>
   </div>
   <% end %>
 
-  <div class="row justify-content-center mt-4">
-    <div class="col-md-1"></div>
+  <div class="row justify-content-center mt-4  mb-4">
     <div class="col-md-4">
-      <p>登録済みの方は<%= link_to "こちら", new_user_session_path, class: 'border-bottom' %>をクリック</p>
+      <strong>登録済みの方は<%= link_to "こちら", new_user_session_path, class: 'border-bottom' %>をクリック</strong>
     </div>
-    <div class="col-md-5"></div>
+    <div class="col-md-3"></div>
   </div>
 </div>

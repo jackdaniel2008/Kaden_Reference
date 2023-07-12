@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <h3 class="table-secondary text-center">商品新規登録</h3>
     </div>
-    <div class="col-md-7"></div>
+    <div class="col-md-9"></div>
   </div>
 
   <%= form_with model: @item, url:admin_items_path do |f| %>
@@ -12,7 +12,7 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <th>商品画像</th>
+            <th class="w-25 p-3">商品画像</th>
             <td>
               <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %>
             </td>
@@ -20,13 +20,13 @@
           <tr>
             <th>商品名</th>
             <td>
-              <%= f.text_field :name, placeholder:"商品名" %>
+              <%= f.text_field :name, placeholder:"商品名", size: "30x1" %>
             </td>
           </tr>
           <tr>
             <th>商品説明</th>
             <td>
-              <%= f.text_area :introduction, placeholder:"ここに説明文を記述します" %>
+              <%= f.text_area :introduction, placeholder:"ここに説明文を記述", size: "80x4" %>
             </td>
           </tr>
           <tr>
@@ -59,8 +59,8 @@
   </div>
 
   <div class="row justify-content-center mt-3">
-    <div class="col-md-3"></div>
-    <div class="col-md-7">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
       <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
     </div>
   </div>
