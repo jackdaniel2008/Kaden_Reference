@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'comments/index'
-  end
   devise_for :users, path: 'users', module: 'public', skip: [:passwords], controllers: {
 　registrations: "public/registrations",
 　sessions: "public/sessions"
@@ -38,13 +35,13 @@ Rails.application.routes.draw do
     # レビューは商品に紐付いているため親子関係のルーティング
     resources :items, only: [:show] do
       resource :favorites, only: [:create, :destroy] # 「1人のユーザーは1つの商品に対して1回しかいいねできない」という仕様であるため、｢resources｣ではなく｢resource｣
-      resources :reviews, only: [:show, :create, :edit, :update, :destroy] do
+      resources :reviews, only: [:index, :create] do
         resource :r_favorites, only: [:create, :destroy]
-        resources :comments, only: [:create, :edit, :update, :destroy]
+        resources :comments, only: [:index, :create]
       end
     end
-    resources :reviews, only: [:index]
-    resources :comments, only: [:index]
+    resources :reviews, only: [:show, :edit, :update, :destroy]
+    resources :comments, only: [:edit, :update, :destroy]
     resources :genres, only: [:index, :show]
     resources :sizes, only: [:index, :show]
     resources :peoples, only: [:index, :show]

@@ -1,7 +1,8 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    @review = Review.find(params[:review_id])
+    @item = Item.find(params[:item_id])
+    @review = @item.reviews.find(params[:review_id])
     @comment = current_user.comments.new(comment_params)
     @comment.review_id = @review.id
     @comment.save
@@ -13,25 +14,22 @@ class Public::CommentsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:item_id])
-    @comment = @review.comments.find(params[:review_id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
-    @review = Review.find(params[:item_id])
-    @comment = @review.comments.find(params[:review_id])
+    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to item_review_path(@review.id)
+      redirect_to review_path(@review.id)
     else
       render :edit
     end
   end
 
   def destroy
-    review = Review.find(params[:item_id])
-    comment = review.comments.find(params[:review_id])
+    comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to item_review_path(review.id)
+    redirect_to review_path(review.id)
   end
 
   private

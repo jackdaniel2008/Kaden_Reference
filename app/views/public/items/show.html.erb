@@ -21,25 +21,9 @@
     <div class="col-md-4">
       <h1><strong><%= @item.name %></strong></h1>
 
-      <% if user_signed_in? %>
-        <% if @item.favorited_by?(current_user) %>
-          <p>
-            <%= link_to item_favorites_path(@item), method: :delete do %>
-              <i class="fas fa-heart" style="color: #f21ceb;"> <%= @item.favorites.count %> いいね</i>
-            <% end %>
-          </p>
-          <% else %>
-          <p>
-            <%= link_to item_favorites_path(@item), method: :post do %>
-              <i class="far fa-heart" style="color: #f21ceb;"> <%= @item.favorites.count %> いいね</i>
-            <% end %>
-          </p>
-        <% end %>
-      <% else %>
-        <p>
-          ♡<%= @item.favorites.count %> いいね
-        </p>
-      <% end %>
+      <div id="favorite_buttons_<%= @item.id %>">
+        <%= render "public/favorites/favorite", item: @item %>
+  　　</div>
 
       <div>
         <strong>
@@ -112,9 +96,9 @@
                 <%= review.body %>
               </td>
               <td class="col-md-2">
-                <%= link_to "詳細", item_review_path(review.id), class: 'btn btn-sm btn-primary' %>
+                <%= link_to "詳細", review_path(review.id), class: 'btn btn-sm btn-primary' %>
                 <% if review.user == current_user %>
-                  <%= link_to "削除する", item_review_path(review.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+                  <%= link_to "削除する", review_path(review.id), method: :delete, class: 'btn btn-sm btn-danger' %>
                 <% end %>
               </td>
             </tr>

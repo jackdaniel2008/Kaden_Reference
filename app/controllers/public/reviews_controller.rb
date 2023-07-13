@@ -1,6 +1,5 @@
 class Public::ReviewsController < ApplicationController
 
-
   def create
     @item = Item.find(params[:item_id])
     @review = current_user.reviews.new(review_params)
@@ -10,8 +9,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    @review = @item.reviews.find(params[:item_id])
+    @review = Review.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all
   end
@@ -21,25 +19,22 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @review = @item.reviews.find(params[:item_id])
+    @review = Review.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
-    @review = @item.reviews.find(params[:item_id])
+    @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to item_review_path(@review.id)
+      redirect_to review_path(@review.id)
     else
       render :edit
     end
   end
 
   def destroy
-    item = Item.find(params[:id])
-    review = item.reviews.find(params[:item_id])
+    review = Review.find(params[:id])
     review.destroy
-    redirect_to item_path(item.id)
+    redirect_to request.referer
   end
 
   private
