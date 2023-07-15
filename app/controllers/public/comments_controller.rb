@@ -19,17 +19,14 @@ class Public::CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    if @comment.update(comment_params)
-      redirect_to review_path(@review.id)
-    else
-      render :edit
-    end
+    @comment.update(comment_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to review_path(review.id)
+    redirect_to request.referer
   end
 
   private

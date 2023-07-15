@@ -9,7 +9,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @item = Item.find(params[:item_id])
+    @review = @item.reviews.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all
   end
@@ -24,11 +25,8 @@ class Public::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
-      redirect_to review_path(@review.id)
-    else
-      render :edit
-    end
+    @review.update(review_params)
+    redirect_to item_review_path(@review.item.id)
   end
 
   def destroy

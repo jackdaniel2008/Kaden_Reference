@@ -35,12 +35,12 @@ Rails.application.routes.draw do
     # レビューは商品に紐付いているため親子関係のルーティング
     resources :items, only: [:show] do
       resource :favorites, only: [:create, :destroy] # 「1人のユーザーは1つの商品に対して1回しかいいねできない」という仕様であるため、｢resources｣ではなく｢resource｣
-      resources :reviews, only: [:index, :create] do
+      resources :reviews, only: [:index, :show, :create] do
         resource :r_favorites, only: [:create, :destroy]
         resources :comments, only: [:index, :create]
       end
     end
-    resources :reviews, only: [:show, :edit, :update, :destroy]
+    resources :reviews, only: [:edit, :update, :destroy]
     resources :comments, only: [:edit, :update, :destroy]
     resources :genres, only: [:index, :show]
     resources :sizes, only: [:index, :show]

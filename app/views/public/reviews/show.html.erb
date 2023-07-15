@@ -5,7 +5,7 @@
         <strong>コメント投稿</strong>
       </div>
       <% if user_signed_in? %>
-        <%= form_with model: [@review, @comment] do |f| %>
+        <%= form_with model: [@item, @review, @comment] do |f| %>
           <div>
             <%= f.text_area :body, size: "23x4" %>
           </div>
@@ -77,8 +77,8 @@
               </td>
               <td class="col-md-2">
                 <% if comment.user == current_user %>
-                  <%= link_to "編集する", edit_item_review_comment_path(@review, comment.id), class: 'btn btn-sm btn-success' %>
-                  <%= link_to "削除する", item_review_comment_path(@review, comment.id), method: :delete, class: 'btn btn-sm btn-danger' %>
+                  <%= link_to "編集する", edit_comment_path(comment.id), class: 'btn btn-sm btn-success' %>
+                  <%= link_to "削除する", comment_path(comment.id), method: :delete, class: 'btn btn-sm btn-danger' %>
                 <% end %>
               </td>
             </tr>
