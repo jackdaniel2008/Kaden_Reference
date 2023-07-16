@@ -20,7 +20,7 @@ class Public::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_back(fallback_location: root_path)
+    redirect_to item_review_path(@comment.review.item.id, @comment.review.id)
   end
 
   def destroy

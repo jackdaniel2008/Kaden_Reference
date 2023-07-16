@@ -20,7 +20,9 @@
           <tr>
             <td class="text-center">
               <%= comment.created_at.strftime('%Y/%m/%d') %></br>
-              <%= comment.review.item.name %>
+              <%= link_to item_path(comment.review.item.id) do %>
+                <%= comment.review.item.name %>
+              <% end %>
             </td>
             <td class="pl-2">
               <%= comment.body %>
