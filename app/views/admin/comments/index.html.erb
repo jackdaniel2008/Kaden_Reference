@@ -3,7 +3,9 @@
     <div class="col-md-3">
       <h3 class="table-secondary text-center">コメント履歴一覧</h3>
     </div>
-    <div class="col-md-9"></div>
+    <div class="col-md-9">
+      <%= link_to "会員詳細へ戻る", admin_user_path(@user.id), class: 'btn btn-sm btn-primary' %>
+    </div>
   </div>
 
   <div class="row justify-content-center mt-3 ml-3">
