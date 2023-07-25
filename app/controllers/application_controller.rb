@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
+    # ユーザー登録時と編集時にそれぞれ必要な項目の指定
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :user_name, :age, :gender, :family])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:last_name, :first_name, :user_name, :age, :gender, :family])
   end
 end
