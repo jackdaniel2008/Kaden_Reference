@@ -68,12 +68,10 @@ ActiveRecord::Schema.define(version: 2023_07_07_105043) do
   end
 
   create_table "genre_tags", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "genre_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_genre_tags_on_genre_id"
-    t.index ["item_id"], name: "index_genre_tags_on_item_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -90,12 +88,10 @@ ActiveRecord::Schema.define(version: 2023_07_07_105043) do
   end
 
   create_table "maker_tags", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "maker_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "maker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_maker_tags_on_item_id"
-    t.index ["maker_id"], name: "index_maker_tags_on_maker_id"
   end
 
   create_table "makers", force: :cascade do |t|
@@ -105,12 +101,10 @@ ActiveRecord::Schema.define(version: 2023_07_07_105043) do
   end
 
   create_table "people_tags", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "people_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "people_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_people_tags_on_item_id"
-    t.index ["people_id"], name: "index_people_tags_on_people_id"
   end
 
   create_table "peoples", force: :cascade do |t|
@@ -135,12 +129,10 @@ ActiveRecord::Schema.define(version: 2023_07_07_105043) do
   end
 
   create_table "size_tags", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "size_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "size_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_size_tags_on_item_id"
-    t.index ["size_id"], name: "index_size_tags_on_size_id"
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -170,12 +162,4 @@ ActiveRecord::Schema.define(version: 2023_07_07_105043) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "genre_tags", "genres"
-  add_foreign_key "genre_tags", "items"
-  add_foreign_key "maker_tags", "items"
-  add_foreign_key "maker_tags", "makers"
-  add_foreign_key "people_tags", "items"
-  add_foreign_key "people_tags", "peoples"
-  add_foreign_key "size_tags", "items"
-  add_foreign_key "size_tags", "sizes"
 end
