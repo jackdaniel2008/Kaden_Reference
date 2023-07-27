@@ -24,6 +24,12 @@ User.create(
     password_confirmation: "test1234",
     )
 
+Item.create(
+    image: open("./app/assets/images/reizouko.jpg"),
+    name: "例:NRF659WPX",
+    introduction: "例：パナソニックの家族向け大容量冷蔵庫。ナノイーなど独自の消臭機能や鮮度を落とすこと無く長期間保存できるチルドルームなど、こだわりの機能が多数搭載されている。",
+    )
+
 # seedsを新規で登録する場合は｢$ rails db:seed｣
 # あとから追記する場合は｢$ bin/rails db:migrate:reset｣した後にもう一度｢$ rails db:seed｣
 Genre.create([
