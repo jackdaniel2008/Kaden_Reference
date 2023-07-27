@@ -11,13 +11,13 @@ Admin.create(
     password: "yuuki0927",
     password_confirmation: "yuuki0927",
     )
-    
+
 User.create(
     last_name: "テスト",
     first_name: "太郎",
     user_name: "テストユーザー",
     age: "30",
-    gender: "0",
+    gender: '2',
     family: "◯人家族",
     email: "test@test.com",
     password: "test1234",
