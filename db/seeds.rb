@@ -11,6 +11,18 @@ Admin.create(
     password: "yuuki0927",
     password_confirmation: "yuuki0927",
     )
+    
+User.create(
+    last_name: "テスト",
+    first_name: "太郎",
+    user_name: "テストユーザー",
+    age: "30",
+    gender: "0",
+    family: "◯人家族",
+    email: "test@test.com",
+    password: "test1234",
+    password_confirmation: "test1234",
+    )
 
 # seedsを新規で登録する場合は｢$ rails db:seed｣
 # あとから追記する場合は｢$ bin/rails db:migrate:reset｣した後にもう一度｢$ rails db:seed｣
