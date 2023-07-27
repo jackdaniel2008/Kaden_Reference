@@ -17,7 +17,7 @@ User.create(
     first_name: "太郎",
     user_name: "テストユーザー",
     age: "30",
-    gender: '2',
+    gender: "male",
     family: "◯人家族",
     email: "test@test.com",
     password: "test1234",
