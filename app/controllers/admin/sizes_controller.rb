@@ -12,6 +12,7 @@ class Admin::SizesController < ApplicationController
     # 元の画面に戻るリダイレクト
       redirect_to request.referer
     else
+      @sizes = Size.all
       render :index
     end
   end

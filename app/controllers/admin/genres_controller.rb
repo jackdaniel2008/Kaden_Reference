@@ -12,6 +12,7 @@ class Admin::GenresController < ApplicationController
     # 元の画面に戻るリダイレクト
       redirect_to request.referer
     else
+      @genres = Genre.all
       render :index
     end
   end

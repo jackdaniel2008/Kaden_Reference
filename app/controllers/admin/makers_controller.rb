@@ -12,6 +12,7 @@ class Admin::MakersController < ApplicationController
     # 元の画面に戻るリダイレクト
       redirect_to request.referer
     else
+      @makers = Maker.all
       render :index
     end
   end

@@ -24,6 +24,15 @@ User.create(
     password_confirmation: "test1234",
     )
 
+item = Item.create(
+    name: "ABCD-EFG(冷蔵庫の型番)",
+    introduction: "片開きの冷蔵庫。冷凍室や野菜室などバランス良く搭載されており、使いやすさ重視。",
+    )
+
+item.image.attach(
+    io: File.open(Rails.root.join('./db/fixtures/reizouko.jpg')),
+    filename: 'reizoko.jpg')
+
 # seedsを新規で登録する場合は｢$ rails db:seed｣
 # あとから追記する場合は｢$ bin/rails db:migrate:reset｣した後にもう一度｢$ rails db:seed｣
 Genre.create([
@@ -96,4 +105,5 @@ Maker.create([
     { name: 'ダイキン' },
     { name: 'シャープ' },
     { name: 'プライベートブランド' },
+    { name: 'その他' },
     ])

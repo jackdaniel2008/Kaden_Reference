@@ -12,6 +12,7 @@ class Admin::PeoplesController < ApplicationController
     # 元の画面に戻るリダイレクト
       redirect_to request.referer
     else
+      @peoples = People.all
       render :index
     end
   end
