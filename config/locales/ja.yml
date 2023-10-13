@@ -1,4 +1,13 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        last_name: 姓
+        first_name: 名
+        user_name: ユーザーネーム
+        age: 年齢
+        gender: 性別
+        family: 家族構成
   enums:
     user:
       gender:

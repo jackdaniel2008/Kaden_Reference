@@ -51,10 +51,10 @@
             <td>
               <!--ラジオボタン機能で二択のチェックボックス作成-->
               <%= f.radio_button :is_deleted, false %>
-              <%= f.label :"有効" %>
+              <%= f.label :is_deleted_false, "有効" %>
 
               <%= f.radio_button :is_deleted, true %>
-              <%= f.label :"退会" %>
+              <%= f.label :is_deleted_true, "退会" %>
             </td>
           </tr>
         </tbody>

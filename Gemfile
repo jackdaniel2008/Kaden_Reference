@@ -50,7 +50,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  
+
   # 本番環境時に「test do」の配下に移動
   gem 'pry-byebug', group: :development
 end
@@ -63,6 +63,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
+gem 'rails-i18n'
 
 gem 'dotenv-rails'
 group :production do
