@@ -4,8 +4,12 @@ class Public::ReviewsController < ApplicationController
     @item = Item.find(params[:item_id])
     @review = current_user.reviews.new(review_params)
     @review.item_id = @item.id
-    @review.save
-    redirect_to request.referer
+    if @review.save
+      redirect_to request.referer
+    else
+      @item = Item.find(params[:item_id])
+      render "public/items/show"
+    end
   end
 
   def show

@@ -64,17 +64,21 @@
       <div class="table-secondary text-center mb-1">
         <strong>レビュー投稿</strong>
       </div>
-      <% if user_signed_in? %>
-        <%= form_with model: [@item, @review] do |f| %>
-          <div>
-            <%= f.text_area :body, size: "23x4" %>
-          </div>
-          <div>
-            <%= f.submit "投稿する" %>
-          </div>
-        <% end %>
+      <% if @review.errors.any? %>
+        <font color="red">※100文字以内です。前の画面に戻って入力し直してください。</font>
       <% else %>
-        <div class="table-bordered">会員登録することでレビューの投稿をすることができます。</div>
+        <% if user_signed_in? %>
+          <%= form_with model: [@item, @review] do |f| %>
+            <div>
+              <%= f.text_area :body, placeholder: "100文字以内で入力してください。", size: "23x4" %>
+            </div>
+            <div>
+              <%= f.submit "投稿する" %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="table-bordered">会員登録することでレビューの投稿をすることができます。</div>
+        <% end %>
       <% end %>
     </div>
 

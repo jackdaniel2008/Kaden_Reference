@@ -5,8 +5,13 @@ class Public::CommentsController < ApplicationController
     @review = @item.reviews.find(params[:review_id])
     @comment = current_user.comments.new(comment_params)
     @comment.review_id = @review.id
-    @comment.save
-    redirect_to request.referer
+    if @comment.save
+      redirect_to request.referer
+    else
+      @item = Item.find(params[:item_id])
+      @review = @item.reviews.find(params[:review_id])
+      render "public/reviews/show"
+    end
   end
 
   def index
